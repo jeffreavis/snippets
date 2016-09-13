@@ -1,4 +1,9 @@
 
+/**
+ * MarkDown WikiApp
+ * This is a simple app that uses markdown syntax to create a wiki.
+ * All pages are saved in localStorage. Requires marked and react.
+ */
 var renderer = new marked.Renderer();
 renderer.link = function(href, title, text) {
     if(href.startsWith('wiki:')) {
@@ -8,6 +13,9 @@ renderer.link = function(href, title, text) {
     return `<a href="${href}" title="${title}">${text}</a>`;        
 };
 
+/**
+ * The markdown editor
+ */
 var MarkdownEditor = React.createClass({
   getInitialState: function() {    
     renderer.changePage =   function(href) {
@@ -71,7 +79,9 @@ var MarkdownEditor = React.createClass({
   }
 });
 
-
+/** 
+ * The app class - handles saves and changing pages.
+ */
 var WikiApp = React.createClass({
     getInitialState: function() {    
         var wiki = JSON.parse(localStorage.getItem('wiki')) || {'FrontPage': 'Type some *markdown* _here_!'},
