@@ -48,7 +48,7 @@
     $.fn.deserialize = function (serializedString, traditional) {
         var $form = $(this);
 
-        traditional = traditional || false; // use traditional or classic style deserializing
+        traditional = traditional || false; // use traditional or classic style deserializing (shallow)
 
         // in case we get a JSON object
         if (typeof (serializedString) == "object") {
